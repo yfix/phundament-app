@@ -9,7 +9,7 @@
  * @license http://www.phundament.com/license
  */
 
-namespace install;
+namespace config;
 use Composer\Script\Event;
 
 /**
