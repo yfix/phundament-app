@@ -13,7 +13,7 @@ namespace config;
 use Composer\Script\Event;
 
 /**
- * P3Setup provides composer hooks
+ * ComposerCallback provides composer hooks
  *
  * This setup class triggers `./yiic migrate` at post-install and post-update.
  * For a package the class triggers `./yiic <vendor/<packageName>-<action>` at post-package-install and
@@ -24,7 +24,7 @@ use Composer\Script\Event;
  *
  * config.php
  *     'params' => array(
-        'composer.hooks' => array(
+        'composer.callbacks' => array(
             'post-update' => array('yiic', 'migrate'),
             'post-install' => array('yiic', 'migrate'),
             'yiisoft/yii-install' => array('yiic', 'webapp', realpath(dirname(__FILE__))),
@@ -33,16 +33,16 @@ use Composer\Script\Event;
 );
 
  * composer.json
- *     "scripts": {
-        "pre-install-cmd": "install\\P3Setup::preInstall",
-        "post-install-cmd": "install\\P3Setup::postInstall",
-        "pre-update-cmd": "install\\P3Setup::preUpdate",
-        "post-update-cmd": "install\\P3Setup::postUpdate",
+ *   "scripts": {
+ *      "pre-install-cmd": "config\\ComposerCallback::preInstall",
+        "post-install-cmd": "config\\ComposerCallback::postInstall",
+        "pre-update-cmd": "config\\ComposerCallback::preUpdate",
+        "post-update-cmd": "config\\ComposerCallback::postUpdate",
         "post-package-install": [
-        "install\\P3Setup::postPackageInstall"
+        "config\\ComposerCallback::postPackageInstall"
         ],
         "post-package-update": [
-        "install\\P3Setup::postPackageUpdate"
+        "config\\ComposerCallback::postPackageUpdate"
         ]
     }
 
@@ -54,9 +54,9 @@ use Composer\Script\Event;
  */
 
 defined('YII_PATH') or define('YII_PATH', dirname(__FILE__).'/../vendor/yiisoft/yii/framework');
-defined('P3_CONSOLE_CONFIG') or define('P3_CONSOLE_CONFIG', dirname(__FILE__).'/console.php');
+defined('CONSOLE_CONFIG') or define('CONSOLE_CONFIG', dirname(__FILE__).'/console.php');
 
-class P3Setup
+class ComposerCallback
 {
     /**
      * Displays welcome message
@@ -159,8 +159,8 @@ class P3Setup
         $app = self::getYiiApplication();
         if ($app === null) return;
 
-        if (isset($app->params['composer.hooks'][$name])) {
-            $args = $app->params['composer.hooks'][$name];
+        if (isset($app->params['composer.callbacks'][$name])) {
+            $args = $app->params['composer.callbacks'][$name];
             $app->commandRunner->addCommands(\Yii::getPathOfAlias('system.cli.commands'));
             $app->commandRunner->run($args);
         }
@@ -180,10 +180,10 @@ class P3Setup
         spl_autoload_register(array('YiiBase', 'autoload'));
 
         if (\Yii::app() === null) {
-            if (is_file(P3_CONSOLE_CONFIG)) {
-                $app = \Yii::createConsoleApplication(P3_CONSOLE_CONFIG);
+            if (is_file(CONSOLE_CONFIG)) {
+                $app = \Yii::createConsoleApplication(CONSOLE_CONFIG);
             } else {
-                throw new \Exception("File from P3_CONSOLE_CONFIG not found");   
+                throw new \Exception("File from CONSOLE_CONFIG not found");   
             }            
         } else {
             $app = \Yii::app();
