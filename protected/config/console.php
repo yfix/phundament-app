@@ -16,22 +16,8 @@ return array(
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'My Console Application',
     'components' => $mainConfig['components'],
-    'modules' => $mainConfig['modules'],
+#    'modules' => $mainConfig['modules'],
     'commandMap' => array(
-        'rsync' => array(
-            'class' => 'vendor.p3extensions.commands.P3RsyncCommand',
-            'servers' => array(
-                'dev' => realpath(dirname(__FILE__) . '/..'),
-                'prod' => 'user@exampl.com:/path/to/phundament/protected',
-            ),
-            'aliases' => array(
-                'data' => 'application.data' # Note: This setting syncs SQLite Database(!) and P3Media Files
-            ),
-        #'params' => '--rsh="ssh -p222"',
-        ),
-        'dumpschema' => array(
-            'class' => 'ext.p3extensions.commands.P3DumpSchemaCommand',
-        ),
         'migrate' => array(
 // alias of the path where you extracted the zip file
             'class' => 'vendor.yiiext.migrate-command.EMigrateCommand',
@@ -62,25 +48,13 @@ return array(
 #'templateFile' => 'system.cli.migration_template',
         ),
         // composer "hooks", will be executed after package install or update
-        'p3webapp' => array(
-            'class' => 'vendor.phundament.p3admin.commands.P3WebAppCommand',
-        ),
-        'p3bootstrap' => array(
-            'class' => 'vendor.phundament.themes.p3bootstrap.commands.P3BootstrapCommand',
-        ),
-        'p3media' => array(
-            'class' => 'vendor.phundament.p3media.commands.P3MediaCommand',
-        ),
     ),
     'params' => array(
         'composer.hooks' => array(
             // args for Yii command runner
+            'yiisoft/yii-install' => array('yiic', 'webapp', dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'),
             'post-update' => array('yiic', 'migrate'),
             'post-install' => array('yiic', 'migrate'),
-            'phundament/p3admin-install' => array('yiic', 'p3webapp', realpath(dirname(__FILE__) . '/..')),
-            'phundament/themes/p3bootstrap-install' => array('yiic', 'p3bootstrap'),
-            'phundament/themes/p3bootstrap-update' => array('yiic', 'p3bootstrap'),
-            'phundament/p3media-install' => array('yiic', 'p3media'),
         ),
     )
 );

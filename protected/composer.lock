@@ -1,0 +1,47 @@
+{
+    "hash": "bd5bb126f6113189b3b676c0b496d4ee",
+    "packages": [
+        {
+            "name": "yiiext/migrate-command",
+            "version": "0.7.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiiext/migrate-command.git",
+                "reference": "79b578ed54cdf6ecaa65db0a496151f7528a7e40"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://nodeload.github.com/yiiext/migrate-command/zipball/79b578ed54cdf6ecaa65db0a496151f7528a7e40",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "installation-source": "dist"
+        },
+        {
+            "name": "yiisoft/yii",
+            "version": "1.1.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii.git",
+                "reference": "b600af63136a8913b192cbe651186f02632c0267"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/yiisoft/yii/zipball/1.1.12",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library",
+            "installation-source": "dist"
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ]
+}

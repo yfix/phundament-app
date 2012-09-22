@@ -161,6 +161,7 @@ class P3Setup
 
         if (isset($app->params['composer.hooks'][$name])) {
             $args = $app->params['composer.hooks'][$name];
+            $app->commandRunner->addCommands(\Yii::getPathOfAlias('system.cli.commands'));
             $app->commandRunner->run($args);
         }
     }
