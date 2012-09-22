@@ -47,7 +47,7 @@ return array(
             'applicationModuleName' => 'core',
             // define all available modules (if you do not set this, modules will be set from yii app config)
             'modulePaths' => array(
-#                'user' => 'vendor.phundament.p3admin.modules-install.user.migrations',
+                'user' => 'vendor.mishamx.yii-user.migrations',
             // ...
             ),
             // you can customize the modules migrations subdirectory which is used when you are using yii module config

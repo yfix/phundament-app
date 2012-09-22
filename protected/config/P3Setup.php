@@ -54,7 +54,7 @@ use Composer\Script\Event;
  */
 
 defined('YII_PATH') or define('YII_PATH', dirname(__FILE__).'/../vendor/yiisoft/yii/framework');
-defined('P3_CONSOLE_CONFIG') or define('P3_CONSOLE_CONFIG', dirname(__FILE__).'/../config/console.php');
+defined('P3_CONSOLE_CONFIG') or define('P3_CONSOLE_CONFIG', dirname(__FILE__).'/console.php');
 
 class P3Setup
 {
@@ -180,8 +180,11 @@ class P3Setup
         spl_autoload_register(array('YiiBase', 'autoload'));
 
         if (\Yii::app() === null) {
-            $config = P3_CONSOLE_CONFIG;
-            $app = \Yii::createConsoleApplication($config);
+            if (is_file(P3_CONSOLE_CONFIG)) {
+                $app = \Yii::createConsoleApplication(P3_CONSOLE_CONFIG);
+            } else {
+                throw new \Exception("File from P3_CONSOLE_CONFIG not found");   
+            }            
         } else {
             $app = \Yii::app();
         }

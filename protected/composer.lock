@@ -1,6 +1,26 @@
 {
-    "hash": "bd5bb126f6113189b3b676c0b496d4ee",
+    "hash": "95c9dafae9eeb026f8fd07b4e142d91a",
     "packages": [
+        {
+            "name": "mishamx/yii-user",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phundament/yii-user.git",
+                "reference": "7affbb3cef1bd337d3e5f897258561ebb6ea1100"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://nodeload.github.com/phundament/yii-user/zipball/7affbb3cef1bd337d3e5f897258561ebb6ea1100",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "yiisoft/yii": ">=1.1.10"
+            },
+            "type": "library",
+            "installation-source": "dist"
+        },
         {
             "name": "yiiext/migrate-command",
             "version": "0.7.1.1",
