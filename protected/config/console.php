@@ -8,18 +8,36 @@
  * Define composer hooks by the following name schema: <vendor>/<packageName>-<action>
  *
  */
-$mainConfig = require('main.php');
 return array(
     'aliases' => array(
         'vendor' => 'application.vendor',
     ),
     'basePath' => dirname(__FILE__) . DIRECTORY_SEPARATOR . '..',
     'name' => 'My Console Application',
-    'components' => $mainConfig['components'],
-#    'modules' => $mainConfig['modules'],
+    'components' => array(
+     'db' => array(
+            'tablePrefix' => 'usr_',
+            // SQLite
+            'connectionString' => 'sqlite:./data/testdrive.db',
+        // MySQL
+        #'connectionString' => 'mysql:host=localhost;dbname=p3',
+        #'emulatePrepare' => true,
+        #'username' => 'test',
+        #'password' => 'test',
+        #'charset' => 'utf8',
+        ),
+        ),
+    'params' => array(
+        'composer.hooks' => array(
+            // args for Yii command runner
+            'yiisoft/yii-install' => array('yiic', 'webapp', dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'),
+            'post-update' => array('yiic', 'migrate'),
+            'post-install' => array('yiic', 'migrate'),
+        ),
+    ),        
     'commandMap' => array(
         'migrate' => array(
-// alias of the path where you extracted the zip file
+            // alias of the path where you extracted the zip file
             'class' => 'vendor.yiiext.migrate-command.EMigrateCommand',
             // this is the path where you want your core application migrations to be created
             'migrationPath' => 'application.migrations',
@@ -29,11 +47,7 @@ return array(
             'applicationModuleName' => 'core',
             // define all available modules (if you do not set this, modules will be set from yii app config)
             'modulePaths' => array(
-                'user' => 'vendor.phundament.p3admin.modules-install.user.migrations',
-                'rights' => 'vendor.phundament.p3admin.modules-install.rights.migrations',
-                'p3pages' => 'vendor.phundament.p3pages.migrations',
-                'p3widgets' => 'vendor.phundament.p3widgets.migrations',
-                'p3media' => 'vendor.phundament.p3media.migrations',
+#                'user' => 'vendor.phundament.p3admin.modules-install.user.migrations',
             // ...
             ),
             // you can customize the modules migrations subdirectory which is used when you are using yii module config
@@ -49,12 +63,4 @@ return array(
         ),
         // composer "hooks", will be executed after package install or update
     ),
-    'params' => array(
-        'composer.hooks' => array(
-            // args for Yii command runner
-            'yiisoft/yii-install' => array('yiic', 'webapp', dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'),
-            'post-update' => array('yiic', 'migrate'),
-            'post-install' => array('yiic', 'migrate'),
-        ),
-    )
 );
