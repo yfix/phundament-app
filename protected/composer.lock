@@ -1,39 +1,38 @@
 {
-    "hash": "2b6bae0c23a4a41d0d00aa899b05040f",
+    "hash": "8123e73252ac3520a41f4ec8b99d3681",
     "packages": [
         {
             "name": "yiiext/migrate-command",
-            "version": "0.7.1.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiiext/migrate-command.git",
                 "reference": "79b578ed54cdf6ecaa65db0a496151f7528a7e40"
             },
-            "dist": {
-                "type": "zip",
-                "url": "https://nodeload.github.com/yiiext/migrate-command/zipball/79b578ed54cdf6ecaa65db0a496151f7528a7e40",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library",
-            "installation-source": "dist"
+            "type": "yii-extension",
+            "installation-source": "source",
+            "description": "This is an enhanced version of the Yii Database Migration Tool that adds module support and many more usefull features.",
+            "homepage": "https://github.com/yiiext/migrate-command",
+            "time": "1347359859"
         },
         {
             "name": "yiisoft/yii",
-            "version": "1.1.12",
+            "version": "1.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii.git",
-                "reference": "b600af63136a8913b192cbe651186f02632c0267"
+                "reference": "e9e4a0d5be901d8bd48e516a2d9afe33d6fd05a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/yiisoft/yii/zipball/1.1.12",
+                "url": "https://api.github.com/repos/yiisoft/yii/zipball/1.1.13",
                 "reference": null,
                 "shasum": null
             },
             "type": "library",
-            "installation-source": "dist"
+            "installation-source": "dist",
+            "description": "Yii PHP Framework",
+            "homepage": "https://github.com/yiisoft/yii"
         }
     ],
     "packages-dev": null,
@@ -41,7 +40,7 @@
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ]
+    "stability-flags": {
+        "yiiext/migrate-command": 20
+    }
 }
