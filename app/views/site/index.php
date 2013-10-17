@@ -1,0 +1,1 @@
+<?php echo CHtml::link('Open Gii', array('/gii')) ?>

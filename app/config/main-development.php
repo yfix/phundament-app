@@ -4,7 +4,6 @@
 
 return array(
     'preload'    => array(
-        #'less', // LESS compiler, only preload on dev systems, config see below
     ),
     'modules'    => array(
         // code generator
@@ -42,17 +41,6 @@ return array(
             'password'           => 'test',
             'charset'            => 'utf8',
             'enableParamLogging' => true
-        ),
-        'less'     => array(
-            'class'        => 'vendor.crisu83.yii-less.components.LessServerCompiler',
-            'files'        => array(
-                // publish output css file via assets
-                '../app/themes/frontend/less/p3.less'      => '../app/themes/frontend/assets/p3.css',
-                '../app/themes/frontend/less/backend.less' => '../app/themes/frontend/assets/backend.css',
-                '../app/themes/backend2/less/backend.less' => '../app/themes/backend2/css/backend.css',
-            ),
-            'nodePath'     => '/opt/local/bin/node',
-            'compilerPath' => $applicationDirectory . '/../vendor/cloudhead/less.js/bin/lessc',
         ),
         'log'      => array(
             'class'  => 'CLogRouter',

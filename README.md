@@ -1,7 +1,7 @@
 Phundament
 ==========
 
-**Version 3-0.21.0-dev**
+> Branch: **vanilla**
 
 
 What is Phundament?
@@ -44,8 +44,6 @@ app/yiic migrate
 ### Step 3
 
 Open `http://localhost/my-app/www/index.php` in your browser
-
-[Manage your application](https://github.com/phundament/app/wiki/Content-Management)
 
 *You may add the `--no-dev` option for production systems or use `--prefer-source` if you want to develop packages.*
 
